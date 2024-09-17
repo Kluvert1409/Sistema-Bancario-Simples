@@ -22,68 +22,86 @@ public class InterfaceGrafica extends JFrame {
     private ContaEspecial contaEspecial;
 
     public InterfaceGrafica() {
+        configurarJanela();
+        inicializarComponentes();
+        adicionarAcoesBotoes();
+    }
 
+    private void configurarJanela() {
         setTitle("Sistema Bancário");
         setSize(1440, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
+    }
 
-        JLabel nomeLabel = new JLabel("Nome:");
-        nomeLabel.setBounds(50, 30, 150, 30);
-        add(nomeLabel);
+    private void inicializarComponentes() {
+        adicionarCamposTexto();
+        adicionarLabels();
+        adicionarBotoes();
+        adicionarAreaDeTexto();
+    }
 
+    private void adicionarCamposTexto() {
         nomeConta = new JTextField();
         nomeConta.setBounds(200, 30, 250, 30);
         add(nomeConta);
-
-        JLabel tipoContaLabel = new JLabel("Tipo de Conta:");
-        tipoContaLabel.setBounds(50, 80, 150, 30);
-        add(tipoContaLabel);
 
         tipoConta = new JComboBox<>(new String[]{"Conta Corrente", "Conta Poupança", "Conta Especial"});
         tipoConta.setBounds(200, 80, 250, 30);
         add(tipoConta);
 
-        botaoCriarConta = new JButton("Criar Conta");
-        botaoCriarConta.setBounds(50, 130, 150, 40);
-        botaoCriarConta.setBackground(Color.black);
-        botaoCriarConta.setForeground(Color.white);
-        add(botaoCriarConta);
+        valor = new JTextField();
+        valor.setBounds(200, 190, 250, 30);
+        add(valor);
+    }
+
+    private void adicionarLabels() {
+        JLabel nomeLabel = new JLabel("Nome:");
+        nomeLabel.setBounds(50, 30, 150, 30);
+        add(nomeLabel);
+
+        JLabel tipoContaLabel = new JLabel("Tipo de Conta:");
+        tipoContaLabel.setBounds(50, 80, 150, 30);
+        add(tipoContaLabel);
 
         JLabel valorLabel = new JLabel("Valor:");
         valorLabel.setBounds(50, 190, 150, 30);
         add(valorLabel);
+    }
 
-        valor = new JTextField();
-        valor.setBounds(200, 190, 250, 30);
-        add(valor);
+    private void adicionarBotoes() {
+        botaoCriarConta = criarBotao("Criar Conta", 50, 130);
+        add(botaoCriarConta);
 
-        botaoDepositar = new JButton("Depositar");
-        botaoDepositar.setBounds(50, 240, 150, 40);
-        botaoDepositar.setBackground(Color.black);
-        botaoDepositar.setForeground(Color.white);
+        botaoDepositar = criarBotao("Depositar", 50, 240);
         add(botaoDepositar);
 
-        botaoSacar = new JButton("Sacar");
-        botaoSacar.setBounds(220, 240, 150, 40);
-        botaoSacar.setBackground(Color.black);
-        botaoSacar.setForeground(Color.white);
+        botaoSacar = criarBotao("Sacar", 220, 240);
         add(botaoSacar);
 
-        botaoConsultar = new JButton("Consultar");
-        botaoConsultar.setBounds(50, 300, 150, 40);
-        botaoConsultar.setBackground(Color.black);
-        botaoConsultar.setForeground(Color.white);
+        botaoConsultar = criarBotao("Consultar", 50, 300);
         add(botaoConsultar);
+    }
 
+    private JButton criarBotao(String texto, int x, int y) {
+        JButton botao = new JButton(texto);
+        botao.setBounds(x, y, 150, 40);
+        botao.setBackground(Color.black);
+        botao.setForeground(Color.white);
+        return botao;
+    }
+
+    private void adicionarAreaDeTexto() {
         resultadoArea = new JTextArea();
         resultadoArea.setBounds(50, 360, 1340, 300);
         resultadoArea.setFont(new Font("Consolas", Font.BOLD, 20));
         resultadoArea.setEditable(false);
         add(resultadoArea);
+    }
 
+    private void adicionarAcoesBotoes() {
         botaoCriarConta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -186,11 +204,9 @@ public class InterfaceGrafica extends JFrame {
         if (contaCorrente != null) {
             resultadoArea.setText(contaCorrente.getRetorno());
         } else if (contaPoupanca != null) {
-            resultadoArea.setText(contaPoupanca.getRetorno()
-            );
+            resultadoArea.setText(contaPoupanca.getRetorno());
         } else if (contaEspecial != null) {
-            resultadoArea.setText(contaEspecial.getRetorno()
-            );
+            resultadoArea.setText(contaEspecial.getRetorno());
         } else {
             resultadoArea.setText("Nenhuma conta criada");
         }
