@@ -8,14 +8,10 @@ import java.awt.event.ActionListener;
 
 public class InterfaceGrafica extends JFrame {
 
-    private JTextField nomeConta;
+    private JTextField nomeConta, valor;
     private JComboBox<String> tipoConta;
-    private JTextField valor;
     private JTextArea resultadoArea;
-    private JButton botaoCriarConta;
-    private JButton botaoDepositar;
-    private JButton botaoSacar;
-    private JButton botaoConsultar;
+    private JButton botaoCriarConta, botaoDepositar, botaoSacar, botaoConsultar;
 
     private ContaCorrente contaCorrente;
     private ContaPoupanca contaPoupanca;
