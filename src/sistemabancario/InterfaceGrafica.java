@@ -11,7 +11,8 @@ public class InterfaceGrafica extends JFrame {
     private JTextField nomeConta, valor;
     private JComboBox<String> tipoConta;
     private JTextArea resultadoArea;
-    private JButton botaoCriarConta, botaoDepositar, botaoSacar, botaoConsultar;
+    private JLabel nomeLabel, tipoContaLabel, valorLabel;
+    private JButton botaoCriarConta, botaoDepositar, botaoSacar, botaoConsultar, botao;
 
     private ContaCorrente contaCorrente;
     private ContaPoupanca contaPoupanca;
@@ -54,15 +55,15 @@ public class InterfaceGrafica extends JFrame {
     }
 
     private void adicionarLabels() {
-        JLabel nomeLabel = new JLabel("Nome:");
+        nomeLabel = new JLabel("Nome:");
         nomeLabel.setBounds(50, 30, 150, 30);
         add(nomeLabel);
 
-        JLabel tipoContaLabel = new JLabel("Tipo de Conta:");
+        tipoContaLabel = new JLabel("Tipo de Conta:");
         tipoContaLabel.setBounds(50, 80, 150, 30);
         add(tipoContaLabel);
 
-        JLabel valorLabel = new JLabel("Valor:");
+        valorLabel = new JLabel("Valor:");
         valorLabel.setBounds(50, 190, 150, 30);
         add(valorLabel);
     }
@@ -82,7 +83,7 @@ public class InterfaceGrafica extends JFrame {
     }
 
     private JButton criarBotao(String texto, int x, int y) {
-        JButton botao = new JButton(texto);
+        botao = new JButton(texto);
         botao.setBounds(x, y, 150, 40);
         botao.setBackground(Color.black);
         botao.setForeground(Color.white);
