@@ -62,9 +62,17 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public String getRetorno() {
-        return ("Nome do cliente: " + getNomeConta() + "\n"
-                + "Número da conta: " + getNumeroConta() + "\n"
-                + "Saldo: " + getSaldoConta() + "\n"
-                + "Rendimento da conta: " + getRendimento());
+        if (getSaldoConta() > 0) {
+            return ("Nome do cliente: " + getNomeConta() + "\n"
+                    + "Número da conta: " + getNumeroConta() + "\n"
+                    + "Saldo: " + getSaldoConta() + "\n"
+                    + "Rendimento da conta: " + getRendimento()) + "\n"
+                    + "Saldo no próximo mês: " + (getSaldoConta() + (getSaldoConta() * getRendimento()));
+        } else {
+            return ("Nome do cliente: " + getNomeConta() + "\n"
+                    + "Número da conta: " + getNumeroConta() + "\n"
+                    + "Saldo: " + getSaldoConta() + "\n"
+                    + "Rendimento da conta: " + getRendimento());
+        }
     }
 }
