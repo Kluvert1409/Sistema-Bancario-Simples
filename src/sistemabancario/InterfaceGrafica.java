@@ -77,25 +77,33 @@ public class InterfaceGrafica extends JFrame {
     }
 
     private void adicionarBotoes() {
-        botaoCriarConta = criarBotao("Criar Conta", 50, 130);
+        botaoCriarConta = new JButton("Criar Conta");
+        botaoCriarConta.setBounds(50, 130, 150, 40);
+        botaoCriarConta.setBackground(Color.black);
+        botaoCriarConta.setForeground(Color.white);
+        botaoCriarConta.setFocusPainted(false);
         add(botaoCriarConta);
 
-        botaoDepositar = criarBotao("Depositar", 50, 240);
+        botaoDepositar = new JButton("Depositar");
+        botaoDepositar.setBounds(50, 240, 150, 40);
+        botaoDepositar.setBackground(Color.black);
+        botaoDepositar.setForeground(Color.white);
+        botaoDepositar.setFocusPainted(false);
         add(botaoDepositar);
 
-        botaoSacar = criarBotao("Sacar", 220, 240);
+        botaoSacar = new JButton("Sacar");
+        botaoSacar.setBounds(220, 240, 150, 40);
+        botaoSacar.setBackground(Color.black);
+        botaoSacar.setForeground(Color.white);
+        botaoSacar.setFocusPainted(false);
         add(botaoSacar);
 
-        botaoConsultar = criarBotao("Consultar", 50, 300);
+        botaoConsultar = new JButton("Consultar");
+        botaoConsultar.setBounds(50, 300, 150, 40);
+        botaoConsultar.setBackground(Color.black);
+        botaoConsultar.setForeground(Color.white);
+        botaoConsultar.setFocusPainted(false);
         add(botaoConsultar);
-    }
-
-    private JButton criarBotao(String texto, int x, int y) {
-        botao = new JButton(texto);
-        botao.setBounds(x, y, 150, 40);
-        botao.setBackground(Color.black);
-        botao.setForeground(Color.white);
-        return botao;
     }
 
     private void adicionarAreaDeTexto() {
